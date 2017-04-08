@@ -1,10 +1,10 @@
 // @flow
 
 import path from 'path'
-
+import webpack from 'webpack'
 import { WDS_PORT } from './src/shared/config'
 import { isProd } from './src/shared/util'
-import webpack from 'webpack'
+
 
 export default {
   entry: [
@@ -34,8 +34,5 @@ export default {
   devtool: isProd ? false : 'source-map',
   resolve: {
     extensions: ['.js', '.jsx'],
-  },
-  devServer: {
-    port: WDS_PORT,
   },
 }
