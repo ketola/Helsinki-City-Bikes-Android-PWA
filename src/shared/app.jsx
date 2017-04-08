@@ -17,7 +17,7 @@ import {
 } from './routes'
 
 const App = () =>
-   <div>
+  <div>
     <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
     <Nav />
     <Switch>
