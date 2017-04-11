@@ -3,10 +3,15 @@
 import React from 'react'
 
 type Props = {
-  title: string,
+  stations: array,
+  title: string
 }
 
-const BikeStation = ({ title }: Props) =>
-  <div>{title}</div>
+function Station(props) {
+  return <div>aaa{props.title}</div>
+}
+
+const BikeStation = ({ stations }: Props) =>
+  <div>{stations.map((st) => <Station title={st} />)}</div>
 
 export default BikeStation

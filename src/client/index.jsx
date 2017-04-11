@@ -11,13 +11,14 @@ import thunkMiddleware from 'redux-thunk'
 
 import App from './app'
 import helloReducer from './reducer/hello'
+import stationReducer from './reducer/station'
 import { APP_CONTAINER_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
 // eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 
-const store = createStore(combineReducers({ hello: helloReducer }),
+const store = createStore(combineReducers({ hello: helloReducer, stations: stationReducer }),
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)

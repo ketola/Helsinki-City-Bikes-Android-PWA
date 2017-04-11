@@ -2,10 +2,10 @@
 
 import { connect } from 'react-redux'
 
-import BikeStation from '../component/bike-station'
+import BikeStations from '../component/bike-stations'
 
 const mapStateToProps = state => ({
   stations: state.stations.get('stations'),
 })
 
-export default connect(mapStateToProps)(BikeStation)
+export default connect(mapStateToProps)(BikeStations)
