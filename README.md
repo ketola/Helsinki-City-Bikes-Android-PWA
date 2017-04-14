@@ -1,4 +1,4 @@
-# Helsinki-City-Bikes-Android-PWA
+# Helsinki-City-Bikes-PWA
 
 A Progressive Web App version of the Helsinki City Bikes Android application (https://github.com/ketola/Helsinki-City-Bikes-Android)
 
