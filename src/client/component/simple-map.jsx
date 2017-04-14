@@ -13,8 +13,9 @@ function defaultZoom(){
 }
 
 const SimpleMap = () =>
-  <div>
+  <div className='google-map'>
     <GoogleMapReact
+        bootstrapURLKeys={{key: 'AIzaSyB4SWt00LABjHhWjk-Ib6KsXdWFnIQcuOY'}}
         defaultCenter={defaultCenter()}
         defaultZoom={defaultZoom()}/>
   </div>

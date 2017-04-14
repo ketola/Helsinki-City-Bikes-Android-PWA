@@ -27,3 +27,8 @@ h1 {
 .bike-station .distance {
   font-size: 14px;
 }
+
+.google-map {
+  width: auto;
+  height: 300px;
+}
