@@ -3,24 +3,26 @@
 import 'isomorphic-fetch'
 
 import { createAction } from 'redux-actions'
-import { helloEndpointRoute } from '../../shared/routes'
 
 export const LOAD_STATIONS = 'LOAD_STATIONS'
+export const LOAD_STATIONS_REQUEST = 'LOAD_STATIONS_REQUEST'
+export const LOAD_STATIONS_SUCCESS = 'LOAD_STATIONS_SUCCESS'
+export const LOAD_STATIONS_FAILURE = 'LOAD_STATIONS_FAILURE'
 
-export const loadStations = createAction(LOAD_STATIONS)
+export const loadStationsRequest = createAction(LOAD_STATIONS_REQUEST)
+export const loadStationsSuccess = createAction(LOAD_STATIONS_SUCCESS)
+export const loadStationsFailure = createAction(LOAD_STATIONS_FAILURE)
 
-export const sayHelloAsync_ = (num: number) => (dispatch: Function) => {
-  dispatch(sayHelloAsyncRequest())
-  return fetch(helloEndpointRoute(num), { method: 'GET' })
+export const loadStations = () => (dispatch: Function) => {
+  dispatch(loadStationsRequest())
+  return fetch('http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental', { method: 'GET' })
     .then((res) => {
-      if (!res.ok) throw Error(res.statusText)
       return res.json()
     })
     .then((data) => {
-      if (!data.serverMessage) throw Error('No message received')
-      dispatch(sayHelloAsyncSuccess(data.serverMessage))
+      dispatch(loadStationsSuccess(data.stations))
     })
-    .catch(() => {
-      dispatch(sayHelloAsyncFailure())
+    .catch((data) => {
+      dispatch(loadStationsFailure(data.stations))
     })
 }
