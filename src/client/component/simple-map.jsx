@@ -4,19 +4,24 @@ import React from 'react'
 import GoogleMapReact from 'google-map-react'
 
 
-function defaultCenter(){
-  return {lat: 59.95, lng: 30.33}
+type Props = {
+  latitude: number,
+  longitude: number
+}
+
+function defaultCenter(props){
+  return {lat: Number.parseFloat(props.location.query.latitude), lng: Number.parseFloat(props.location.query.longitude)}
 }
 
 function defaultZoom(){
-  return 11;
+  return 18;
 }
 
-const SimpleMap = () =>
+const SimpleMap = (props) =>
   <div className='google-map'>
     <GoogleMapReact
         bootstrapURLKeys={{key: 'AIzaSyB4SWt00LABjHhWjk-Ib6KsXdWFnIQcuOY'}}
-        defaultCenter={defaultCenter()}
+        defaultCenter={defaultCenter(props)}
         defaultZoom={defaultZoom()}/>
   </div>
 
