@@ -17,15 +17,15 @@ const initialState = Immutable.fromJS({
 const stationReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
   switch (action.type) {
     case LOAD_STATIONS:
-      return state.set('stations', action.payload)
+      return state
     case LOAD_STATIONS_REQUEST:
-        return state.set('stations', action.payload)
+        return state
     case LOAD_STATIONS_SUCCESS:
       return state.set('stations', action.payload)
     case LOAD_STATIONS_FAILURE:
-      return state.set('stations', action.payload)
+      return state
     default:
-      return state.set('stations', action.payload)
+      return state
   }
 }
 
