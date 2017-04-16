@@ -12,7 +12,7 @@ const Station = (props) => (
   <div className='bike-station'>
     <div className='title'>{props.station.name}</div>
     <div className='bikes'>Bikes: {props.station.bikesAvailable} / {props.station.bikesAvailable + props.station.spacesAvailable}</div>
-    <div className='distance'>Distance: {geolib.getDistance( {latitude: props.geoposition.coords.latitude, longitude: props.geoposition.coords.longitude}, {latitude: props.station.y, longitude: props.station.x})} m</div>
+    <div className='distance'>Distance: {props.geoposition.coords && geolib.getDistance( {latitude: props.geoposition.coords.latitude, longitude: props.geoposition.coords.longitude}, {latitude: props.station.y, longitude: props.station.x})} m</div>
   </div>
 )
 
