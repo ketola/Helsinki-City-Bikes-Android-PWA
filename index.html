@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>${title}</title>
+    <script language>
+    console.log('init<');
+    if ('serviceWorker' in navigator) {
+      //window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          // Registration was successful
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+          // registration failed :(
+          console.log('ServiceWorker registration failed: ', err);
+        });
+    //  });
+    }
+    </script>
+    <link rel="stylesheet" href="public/css/style.css">
+
+  </head>
+  <body>
+    <div class="js-app"></div>
+    <script src="/dist/js/bundle.js"></script>
+  </body>
+</html>

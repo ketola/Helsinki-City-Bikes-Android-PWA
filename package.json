@@ -10,11 +10,8 @@
   ],
   "scripts": {
     "start": "yarn dev:start",
-    "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
     "dev:wds": "webpack-dev-server --progress",
     "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
-    "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
-    "prod:stop": "pm2 delete server",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
     "test": "yarn lint && flow && jest --coverage",
     "precommit": "yarn test",
@@ -63,6 +60,7 @@
     "pm2": "^2.4.4",
     "redux-mock-store": "^1.2.2",
     "rimraf": "^2.6.1",
+    "serviceworker-webpack-plugin": "^0.2.1",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   }
