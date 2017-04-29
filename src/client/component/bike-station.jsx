@@ -19,14 +19,20 @@ const Station = (props) => (
     <div className='bike-station'>
       <div className='title'>{props.station.name}</div>
       <div className='bikes'>Bikes: {props.station.bikesAvailable} / {props.station.bikesAvailable + props.station.spacesAvailable}</div>
-      <div className='distance'>Distance: {props.geoposition.coords && geolib.getDistance( {latitude: props.geoposition.coords.latitude, longitude: props.geoposition.coords.longitude}, {latitude: props.station.y, longitude: props.station.x})} m</div>
+      <div className='distance'>Distance: {props.station.distance} m</div>
     </div>
   </IndexLink>
 )
 
 const BikeStation = ({ stations, geoposition }: Props) =>
   <div>
-    <div>{stations && stations.map((st) => <Station station={st} geoposition={geoposition}  />)}</div>
+    <div>{stations && geoposition.coords && stations
+      .map(st => {
+        st.distance = geolib.getDistance({latitude: geoposition.coords.latitude, longitude: geoposition.coords.longitude}, {latitude: st.y, longitude: st.x})
+        return st
+        })
+      .sort((a,b) => a.distance - b.distance)
+      .map((st) => <Station station={st} key={st.id}/>)}</div>
   </div>
 
 export default BikeStation
