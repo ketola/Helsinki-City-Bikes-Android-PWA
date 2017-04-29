@@ -17,10 +17,19 @@ const defaultCenter = (props) => {
 const defaultZoom = () => 18
 
 const Marker = (props) =>
-  <div className='map-marker'>
-    {props.station.name}
+  <div>
+    <div className='map-marker'>
+      <div className="marker-graphic">
+        &nbsp;
+      </div>
+    </div>
+    <div className="marker-text-available">
+      {props.station.name}
+      <br/>
+      {props.station.bikesAvailable} / {props.station.spacesAvailable}
+    </div>
   </div>
-
+  
 const SimpleMap = (props) =>
   <div className='google-map'>
     <GoogleMapReact

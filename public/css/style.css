@@ -32,3 +32,32 @@ h1 {
   width: auto;
   height: 600px;
 }
+
+.marker-text-available {
+  border: 1px solid #000;
+  background-color: #0099cc;
+  margin: 3px;
+  padding: 3px;
+  width: 130px;
+  text-align: center;
+  position: absolute;
+  top: -40px;
+  left: -50px;
+  display: none;
+  z-index: 100;
+}
+
+.map-marker .marker-graphic {
+  position: absolute;
+  text-align: center;
+  border: 2px solid #000;
+  background-color: #660000;
+  width: 15px;
+  height: 15px;
+  left: 12px;
+  border-radius: 10px;
+}
+
+div:hover + div {
+  display: block;
+}
