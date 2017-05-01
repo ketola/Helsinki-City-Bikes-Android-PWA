@@ -23,8 +23,6 @@ export default {
   ],
   output: {
     filename: 'js/bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: isProd ? '/static/' : `http://localhost:${WDS_PORT}/dist/`,
   },
   module: {
     rules: [

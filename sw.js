@@ -5,8 +5,8 @@ var urlsToCache = [
   '/',
   '/index.html',
   '/public/css/style.css',
-  '/dist/js/bundle.js',
-  'http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental'
+  '/js/bundle.js',
+  'https://api.digitransit.fi/routing/v1/routers/hsl/bike_rental'
 ];
 
 self.addEventListener('activate', function(event) {

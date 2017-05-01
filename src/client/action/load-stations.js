@@ -15,7 +15,7 @@ export const loadStationsFailure = createAction(LOAD_STATIONS_FAILURE)
 
 export const loadStations = () => (dispatch: Function) => {
   dispatch(loadStationsRequest())
-  return fetch('http://api.digitransit.fi/routing/v1/routers/hsl/bike_rental', { method: 'GET' })
+  return fetch('https://api.digitransit.fi/routing/v1/routers/hsl/bike_rental', { method: 'GET' })
     .then((res) => {
       return res.json()
     })
