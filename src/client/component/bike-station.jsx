@@ -17,8 +17,7 @@ const Station = (props) => (
     query: { latitude: props.station.y, longitude: props.station.x }
   }}>
     <div className='bike-station'>
-      <div className='title'>{props.station.name}</div>
-      <div className='bikes'>Bikes: {props.station.bikesAvailable} / {props.station.bikesAvailable + props.station.spacesAvailable}</div>
+      <div className='title'>{props.station.name} ({props.station.bikesAvailable} / {props.station.bikesAvailable + props.station.spacesAvailable})</div>
       <div className='distance'>Distance: {props.station.distance} m</div>
     </div>
   </IndexLink>

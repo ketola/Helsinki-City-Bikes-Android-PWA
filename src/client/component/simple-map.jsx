@@ -20,7 +20,7 @@ const Marker = (props) =>
   <div>
     <div className='map-marker'>
       <div className="marker-graphic">
-        &nbsp;
+        
       </div>
     </div>
     <div className="marker-text-available">
@@ -29,7 +29,7 @@ const Marker = (props) =>
       {props.station.bikesAvailable} / {props.station.spacesAvailable}
     </div>
   </div>
-  
+
 const SimpleMap = (props) =>
   <div className='google-map'>
     <GoogleMapReact
