@@ -25,9 +25,9 @@ const Station = (props) => (
 
 const BikeStation = ({ stations, geoposition }: Props) =>
   <div>
-    <div>{stations && geoposition.coords && stations
+    <div>{stations && stations
       .map(st => {
-        st.distance = geolib.getDistance({latitude: geoposition.coords.latitude, longitude: geoposition.coords.longitude}, {latitude: st.y, longitude: st.x})
+        st.distance = (geoposition.coords ? geolib.getDistance({latitude: geoposition.coords.latitude, longitude: geoposition.coords.longitude}, {latitude: st.y, longitude: st.x}) : 0)
         return st
         })
       .sort((a,b) => a.distance - b.distance)
