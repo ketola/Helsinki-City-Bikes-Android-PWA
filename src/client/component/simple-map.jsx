@@ -20,13 +20,13 @@ const Marker = (props) =>
   <div>
     <div className='map-marker'>
       <div className="marker-graphic">
-        
+
       </div>
     </div>
     <div className="marker-text-available">
       {props.station.name}
       <br/>
-      {props.station.bikesAvailable} / {props.station.spacesAvailable}
+      {props.station.bikesAvailable} / {props.station.bikesAvailable + props.station.spacesAvailable}
     </div>
   </div>
 
