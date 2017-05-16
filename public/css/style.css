@@ -34,8 +34,8 @@ a:link {
 }
 
 .google-map {
-  width: auto;
-  height: 600px;
+  width: 100%;
+  height: 100%;
 }
 
 .marker-text-available {
