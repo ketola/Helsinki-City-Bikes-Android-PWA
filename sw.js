@@ -1,52 +1,45 @@
-var APP_VERSION = '0.0.7'
-var CACHE_NAME = 'hcb-cache_' + APP_VERSION
-var urlsToCache = [
-  '/',
-  '/index.html',
-  '/public/css/style.css',
-  '/js/bundle.js'
-];
+var CACHE = 'cache-and-update-hcb';
+var VERSION = '1.0.0';
 
-self.addEventListener('activate', function(event) {
-  console.log('activate service worker');
-  event.waitUntil(self.clients.claim());
+self.addEventListener('install', function(evt) {
+  console.log('The service worker is being installed.');
 
-  event.waitUntil(
-    caches.keys().then(function(keyList) {
-      return Promise.all(keyList.map(function(key) {
-        if (CACHE_NAME !== key) {
-          console.log('delete old cache ' + key)
-          return caches.delete(key);
-        }
-      }));
-    })
-  );
+  evt.waitUntil(self.skipWaiting());
+  evt.waitUntil(precache());
+
+  console.log('The service worker was installed.');
 });
 
-self.addEventListener('install', function(event) {
-  console.log('install service worker');
-  event.waitUntil(self.skipWaiting());
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
+self.addEventListener('fetch', function(evt) {
+  console.log('The service worker is serving the asset.');
+  evt.respondWith(fromCache(evt.request));
+  console.log('Served, update resource');
+  evt.waitUntil(update(evt.request));
 });
 
-self.addEventListener('fetch', function(event) {
-  console.log('fetch ' + event.request.url);
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        if (response) {
-          console.log('Cache hit ' + event.request.url);
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
-  );
-});
+function precache() {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.addAll([
+      '/stations.html',
+      '/js/bundle.js',
+      '/public/css/styles.css',
+      'https://api.digitransit.fi/routing/v1/routers/hsl/bike_rental'
+    ]);
+  });
+}
+
+function fromCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request).then(function (matching) {
+      return matching || Promise.reject('no-match');
+    });
+  });
+}
+
+function update(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response);
+    });
+  });
+}
