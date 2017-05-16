@@ -1,10 +1,9 @@
-var CACHE = 'cache-and-update-hcb';
+var CACHE = 'cache-and-update-hcb-1';
 var VERSION = '1.0.0';
 
 self.addEventListener('install', function(evt) {
   console.log('The service worker is being installed.');
 
-  evt.waitUntil(self.skipWaiting());
   evt.waitUntil(precache());
 
   console.log('The service worker was installed.');
@@ -20,9 +19,11 @@ self.addEventListener('fetch', function(evt) {
 function precache() {
   return caches.open(CACHE).then(function (cache) {
     return cache.addAll([
-      '/stations.html',
+      '/index.html',
       '/js/bundle.js',
-      '/public/css/styles.css',
+      '/public/css/style.css',
+      '/manifest.json',
+      '/sw.js',
       'https://api.digitransit.fi/routing/v1/routers/hsl/bike_rental'
     ]);
   });

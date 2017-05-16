@@ -1,7 +1,7 @@
 {
   "name": "Helsinki City Bikes",
   "short_name": "Helsinki City Bikes",
-  "start_url": "index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#fff",
   "description": "Availability and locations of the public bikes in Helsinki",
