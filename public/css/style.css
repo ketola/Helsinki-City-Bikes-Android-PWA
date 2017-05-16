@@ -39,28 +39,32 @@ a:link {
 }
 
 .marker-text-available {
-  border: 1px solid #000;
-  background-color: #0099cc;
-  margin: 3px;
-  padding: 3px;
-  width: 130px;
   text-align: center;
   position: absolute;
-  top: -40px;
-  left: -50px;
-  display: none;
+  text-align: center;
+  top: 20px;
+  font-size: 17px;
+  width: 64px;
+  height: 100px;
+}
+
+.marker-station-name {
+  position: absolute;
+  text-align: center;
+  top: -25px;
+  left: -20px;
+  font-size: 17px;
+  font-weight: bold;
+  width: 120px;
   z-index: 100;
+  display: none;
 }
 
 .map-marker .marker-graphic {
   position: absolute;
-  text-align: center;
-  border: 2px solid #000;
-  background-color: #006600;
-  width: 15px;
-  height: 15px;
-  left: 12px;
-  border-radius: 10px;
+  background-image: url('/public/images/marker64.png');
+  width: 64px;
+  height: 100px;
 }
 
 div:hover + div, div:active + div {
