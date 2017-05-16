@@ -28,8 +28,10 @@ const options = {
               }
 
 export const getLocation = () => (dispatch: Function) => {
+  console.log('Get Location')
   dispatch(getLocationRequest())
   navigator.geolocation.watchPosition(function(position) {
+    console.log('Position ', position)
     dispatch(getLocationSuccess(position))
   })
 }
