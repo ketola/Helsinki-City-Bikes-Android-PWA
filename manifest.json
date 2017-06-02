@@ -5,6 +5,7 @@
   "display": "standalone",
   "background_color": "#fff",
   "description": "Availability and locations of the public bikes in Helsinki",
+  "gcm_sender_id": "319877312023",
   "icons": [{
     "src": "public/images/mipmap-mdpi/ic_launcher.png",
     "sizes": "48x48",
