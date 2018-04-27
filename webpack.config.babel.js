@@ -4,6 +4,8 @@ import path from 'path'
 import webpack from 'webpack'
 import { WDS_PORT } from './src/shared/config'
 import { isProd } from './src/shared/util'
+import SWPrecacheWebpackPlugin from 'sw-precache-webpack-plugin'
+
 
 
 export default {
@@ -20,6 +22,20 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'hel-citybikes-pwa',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: false,
+        navigateFallback: 'index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+        staticFileGlobs: [
+          'public/css/**.*',
+          'public/images/**.*',
+        ],
+      }
+    )
   ],
   output: {
     filename: 'js/bundle.js',

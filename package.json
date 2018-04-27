@@ -12,7 +12,7 @@
     "start": "yarn dev:start",
     "dev:wds": "webpack-dev-server --progress",
     "prod:build": "rimraf lib dist js && mkdir js dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress && cp -r index.html manifest.json sw.js js public dist && tar -zcvf dist.tar.gz dist/ ",
-    "prod:s3":"aws s3 sync dist s3://helsinki-city-bikes --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --profile citybikes",
+    "prod:s3": "aws s3 sync dist s3://helsinki-city-bikes --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --profile citybikes",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
     "test": "yarn lint && flow && jest --coverage",
     "precommit": "yarn test",
@@ -62,6 +62,8 @@
     "redux-mock-store": "^1.2.2",
     "rimraf": "^2.6.1",
     "serviceworker-webpack-plugin": "^0.2.1",
+    "sw-precache": "^5.2.1",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   }
