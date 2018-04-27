@@ -62,9 +62,9 @@ a:link {
 
 .map-marker .marker-graphic {
   position: absolute;
-  background-image: url('/public/images/marker64.png');
+  background-image: url('/public/images/marker2r.png');
   width: 64px;
-  height: 100px;
+  height: 64px;
 }
 
 div:hover + div, div:active + div {
