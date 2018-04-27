@@ -10,7 +10,7 @@ self.addEventListener('install', function(evt) {
 });
 
 self.addEventListener('fetch', function(evt) {
-  if(evt.request.url.match(/googleapis.com|gstatic.com/).length === 0){
+  if(evt.request.url.match(/googleapis.com|gstatic.com/) != null){
     console.log('The service worker is serving the asset.');
     evt.respondWith(fromCache(evt.request));
     console.log('Served, update resource');
@@ -46,20 +46,3 @@ function update(request) {
     });
   });
 }
-
-self.addEventListener('push', function(event) {
-  console.log('Received a push message', JSON.stringify(event));
-
-  var title = 'Yay a message.';
-  var body = 'We have received a push message.';
-  var icon = '/public/images/mipmap-xxxhdpi/ic_launcher.png';
-  var tag = 'simple-push-demo-notification-tag';
-
-  event.waitUntil(
-    self.registration.showNotification(title, {
-      body: body,
-      icon: icon,
-      tag: tag
-    })
-  );
-});
